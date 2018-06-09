@@ -1,0 +1,21 @@
+#Commands For Cut & Paste
+
+minikube start
+kubectl get nodes
+kubectl label node minikube storageType=ssd
+kubectl get node --show-labels
+kubectl get node -L storageType
+kubectl describe node minikube
+kubectl apply -f ./deployment.yaml
+kubectl label node minikube storageType-
+kubectl delete deployment tomcat-deployment
+kubectl apply -f ./deployment.yaml
+kubectl get pods
+kubectl describe pod tomcat-deployment_${unic_id}
+kubectl describe deployment tomcat-deployment
+kubectl label node minikube storageType=ssd
+kubectl describe pod tomcat-deployment_${unic_id}
+kubectl describe deployment tomcat-deployment
+kubectl label node minikube storageType-
+kubectl delete deployment tomcat-deployment
+minikube stop

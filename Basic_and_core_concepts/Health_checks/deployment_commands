@@ -1,0 +1,8 @@
+#Commands For Cut & Paste
+
+minikube start
+cat ./deployment.yaml
+kubectl apply -f ./deployment.yaml
+kubectl describe deployment tomcat-deployment
+kubectl delete deployment tomcat-deployment
+minikube stop
