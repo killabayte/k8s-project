@@ -1,0 +1,15 @@
+#Commands As Text For Cut & Paste
+
+cat deployment.yaml
+minikube start
+kubectl apply -f ./deployment.yaml
+kubectl get deployments
+kubectl expose deployment tomcat-deployment --type=NodePort
+kubectl get services
+curl $(minikube service tomcat-deployment --url)
+
+@Returned result: ApacheTomcat welcome page@
+
+kubectl delete deployment tomcat-deployment
+kubectl delete service tomcat-deployment
+minikube stop

@@ -1,0 +1,13 @@
+#Commands For Cut & Paste
+
+kubectl get pods
+kubectl get pods [pod name]
+kubectl expose <type name> <identifier/name> [—port=external port] [—target-port=container-port [—type=service-type]
+kubectl port-forward <pod name> [LOCAL_PORT:]REMOTE_PORT]
+kubectl attach <pod name> -c <container>
+kubectl exec  [-it] <pod name> [-c CONTAINER] — COMMAND [args…]
+kubectl label [—overwrite] <type> KEY_1=VAL_1 ….
+kubectl run <name> —image=image
+
+* kubectl reference: https://kubernetes.io/docs/reference/kubectl/kubectl/#kubectl
+* kubectl cheat sheet: https://kubernetes.io/docs/reference/kubectl/cheatsheet/
