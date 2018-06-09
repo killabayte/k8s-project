@@ -5,4 +5,7 @@ cat ./deployment.yaml
 kubectl apply -f ./deployment.yaml
 kubectl describe deployment tomcat-deployment
 kubectl delete deployment tomcat-deployment
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl proxy
+minikube dashboard
 minikube stop
