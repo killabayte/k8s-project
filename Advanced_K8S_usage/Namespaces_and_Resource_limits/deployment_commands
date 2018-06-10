@@ -1,0 +1,7 @@
+#Commands For Cut & Paste
+
+minikube start
+minikube addons enable heapster
+kubectl get pods -n kube-system | grep heapster
+minikube addons open heapster
+minikube stop
