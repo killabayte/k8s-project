@@ -1,7 +1,13 @@
 #Commands For Cut & Paste
 
-minikube start
-minikube addons enable heapster
-kubectl get pods -n kube-system | grep heapster
-minikube addons open heapster
-minikube stop
+0.  minikube start
+    minikube addons enable heapster
+    kubectl get pods -n kube-system | grep heapster
+    minikube addons open heapster
+    minikube stop
+
+1. kubectl crtate namespace cpu-limited-tomcat
+   cat ./cpu-limits.yaml
+   kubectl create -f ./cpu-limits.yaml
+   kubectl create -f ./tomcat-deployment.yaml
+   kubectl describe deployment tomcat-deployment --namespace=cpu-limited-tomcat
