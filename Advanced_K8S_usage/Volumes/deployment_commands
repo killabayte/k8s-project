@@ -1,0 +1,14 @@
+#Commands For Cut & Paste
+
+minikube start
+cat ./local-volumes.yaml
+kubectl create -f ./local-volumes.yaml
+kubectl create -f ./mysql-deployment.yaml
+kubectl create -f ./wordpress-deployment.yaml
+kubectl create -f ./secret.yaml
+minikube service wordpress --url
+kubectl delete deployment wordpress
+kubectl get deployment
+kubectl create -f ./wordpress-deployment.yaml
+minikube service wordpress --url
+minikube stop

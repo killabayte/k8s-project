@@ -1,0 +1,15 @@
+#Commands For Cut & Paste
+
+minikube start
+cat ./mysql-deployment.yaml
+kubectl create -f ./mysql-deployment.yaml
+kubectl describe deployment mysql-deployment
+kubectl describe pod mysql-deployment-${unic-id}
+cat ./wordpress-deployment.yaml
+kubectl create -f ./wordpress-deployment.yaml
+kubectl describe deployment wordpress-deployment
+kubectl describe pod wordpress-deployment-${unic-id}
+kubectl get service
+minikube service wordpress --url
+"""go in your browser with this url and check what you got with your deployment"""" 
+minikube stop
