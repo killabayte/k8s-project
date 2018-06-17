@@ -1,0 +1,13 @@
+#Commands For Cut & Paste
+
+minikube start
+kubectl apply -f ./wordpress-deployment.yaml
+kubectl autoscale deployment wordpress --cpu-percent=50 --min=1 --max=5
+kubectl get hpa
+kubectl describe hpa wordpress
+kubectl get hpa/wordpress -o yaml > wordpress-hpa.yaml
+kubectl run -i --tty load-generator --image=busybox /bin/sh
+while true; do wget -q -O- http://wordpress.default.svc.cluster.local; done
+kubectl get hpa
+kubectl describe hpa wordpress
+minikube stop
