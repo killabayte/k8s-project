@@ -1,0 +1,9 @@
+#Commands For Cut & Paste
+
+minikube start
+minikube addons list
+minikube addons enable metrics-server
+minikube addons enable heapster
+minikube addons open heapster
+#Discover your cluster
+minikube stop
