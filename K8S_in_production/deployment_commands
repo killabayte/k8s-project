@@ -1,0 +1,38 @@
+#Commands For Cut & Paste
+
+#Get KOPS
+curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops-linux-amd64
+sudo mv kops-linux-amd64 /usr/local/bin/kops
+
+#Get Kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+#Get AWS
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
+#Configure AWS 
+aws configure
+
+#Create S3 bucket for K8S-cluster
+aws s3api create-bucket --bucket ${bucket-uniq-name} --region us-west-2 --create-bucket-configuration LocationConstraint=us-west-2 
+
+#Export bucket for k8S-state
+export KOPS_STATE_STORE=s3://${bucket-uniq-name}
+
+#Crete K8S-cluster
+kops create cluster ${K8S-cluster-uniq-name} --zones us-west-2a --yes
+
+#Test yours cluster
+kubectl get pods -n kube-system
+
+#HA K8S-cluster installation
+kops create cluster ${K8S-cluster-uniq-name} --zones us-west-2a,us-west-2b,us-west-2c --node-count 3 --master-zones us-west-2a,us-west-2b,us-west-2c  --yes 
+
+#Check cluster state
+kops validate cluster
+kubectl get nodes
